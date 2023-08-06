@@ -8,8 +8,9 @@ const style = {
 
 const styleMobile = {
   headerMobile: `w-full text-3xl font-bold text-[#00df9a] m-4`,
-  menuBar: `fixed left-0 top-0 w-[50%] h-full border-r border-r-gray-900 bg-[#000300]`,
+  menuBar: `fixed left-0 top-0 w-[50%] h-full border-r border-r-gray-900 bg-[#000300] z-50`,
   menuBottom: `p-4 border-b border-b-gray-700`,
+  transition: `ease-in-out duration-500`,
 };
 
 const Navbar = () => {
@@ -30,13 +31,13 @@ const Navbar = () => {
         <li className="p-4">Contact</li>
       </ul>
       <div onClick={handleNav} className="block md:hidden">
-        {!nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+        {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
       </div>
 
       <div
         className={
-          !nav
-            ? `${styleMobile.menuBar} ease-in-out duration-500`
+          nav
+            ? `${styleMobile.menuBar} ${styleMobile.transition}`
             : "fixed left-[-100%]"
         }
       >
